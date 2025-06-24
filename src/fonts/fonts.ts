@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
-import { DM_Serif_Text, Mona_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 
-export const modernNegra = localFont({
+const modernNegra = localFont({
   src: [
     {
       path: "./ModernNegra.ttf",
@@ -14,14 +14,16 @@ export const modernNegra = localFont({
   preload: true,
 });
 
-export const mono = Mona_Sans({
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-mono",
+const inter = Inter({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-export const serif = DM_Serif_Text({
-  weight: ["400"],
-  variable: "--font-serif",
-  subsets: ["latin"],
-});
+const fonts = {
+  modernNegra,
+  inter,
+};
+
+export default fonts;
+export type Fonts = typeof fonts;

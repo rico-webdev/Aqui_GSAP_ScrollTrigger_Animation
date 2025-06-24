@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { mono, serif, modernNegra } from "@/fonts/fonts";
+import Navbar from "@/components/Navbar";
+import fonts from "@/fonts/fonts";
 
 export const metadata: Metadata = {
   title: "Modern, GSAP Animated, Cocktail Menu",
@@ -14,7 +15,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${mono.variable} ${serif.variable} ${modernNegra.variable} antialiased`}>
+      <body className={`${fonts.inter.className}`}>
+        <Navbar />
         {children}
       </body>
     </html>

@@ -1,9 +1,23 @@
 @import "tailwindcss";
 
+*,
+*::before,
+*::after {
+  /* @apply bg-amber-500/5; */
+}
+
+.font-modern-negra {
+  font-family: var(--font-modern-negra);
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+
 @theme {
   --color-yellow: #e7d393;
+  --color-green: #bdc667;
   --color-white-100: #efefef;
-  --font-modern-negra: "Modern Negra", sans-serif;
 }
 
 @utility flex-center {
@@ -17,15 +31,35 @@
 html,
 body {
   width: 100%;
-  background-color: black;
+  background-color: #010114;
+  background-color: #141414;
   color: white;
   scroll-behavior: smooth;
   overflow-x: hidden;
-  font-family: "modern-negra", sans-serif;
+  font-family: var(--font-inter);
 }
 
 @layer components {
   main {
     @apply w-full overflow-x-hidden;
+
+    h1 {
+      @apply flex-center text-9xl uppercase;
+    }
+  }
+
+  nav {
+    @apply fixed z-50 w-full px-10 font-extralight;
+
+    div {
+      @apply flex md:flex-row flex-col md:justify-between items-center gap-5 py-5 lg:px-0 px-5 container mx-auto;
+    }
+    a {
+      @apply cursor-pointer text-nowrap text-sm md:text-base hover:text-yellow transition-colors duration-300;
+    }
+
+    ul {
+      @apply flex-center lg:gap-12 gap-7;
+    }
   }
 }
