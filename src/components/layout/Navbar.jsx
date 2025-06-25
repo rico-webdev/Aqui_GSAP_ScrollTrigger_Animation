@@ -1,16 +1,21 @@
 "use client";
 
+// react and next imports
 import React, { useRef } from "react";
-import { navLinks } from "@/constants/constants";
+import Link from "next/link";
 import Image from "next/image";
+
+// gsap imports
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 gsap.registerPlugin(ScrollTrigger);
+
+// internal imports
+import { navLinks } from "@/constants/constants";
+
 const Navbar = () => {
   const navRef = useRef(null);
-
   const isAnimating = useRef(false);
 
   useGSAP(() => {
@@ -61,9 +66,9 @@ const Navbar = () => {
         <ul>
           {navLinks.map((link) => (
             <li key={link.id}>
-              <a href={link.href}>
+              <Link href={link.href}>
                 <p>{link.title}</p>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

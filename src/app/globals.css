@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* dev  */
 *,
 *::before,
 *::after {
@@ -8,10 +9,6 @@
 
 .font-modern-negra {
   font-family: var(--font-modern-negra);
-}
-
-.font-inter {
-  font-family: var(--font-inter);
 }
 
 @theme {
@@ -31,8 +28,9 @@
 html,
 body {
   width: 100%;
-  background-color: #010114;
   background-color: #141414;
+  background-color: #010114;
+  background-color: #000000;
   color: white;
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -44,7 +42,7 @@ body {
     @apply w-full overflow-x-hidden;
 
     h1 {
-      @apply flex-center text-9xl uppercase;
+      @apply flex-center text-9xl uppercase tracking-wide;
     }
   }
 
@@ -60,6 +58,22 @@ body {
 
     ul {
       @apply flex-center lg:gap-12 gap-7;
+    }
+  }
+
+  #hero {
+    @apply relative z-10 min-h-dvh w-full border border-transparent;
+
+    h1 {
+      @apply mt-30 md:mt-32  text-8xl md:text-[15vw] leading-none text-center;
+    }
+
+    .left-leaf {
+      @apply absolute left-0 -bottom-2 md:top-40 w-[30%] md:w-fit;
+    }
+
+    .right-leaf {
+      @apply absolute right-0 top-1/4 md:top-2/4 xl:top-12 w-1/4 md:w-fit;
     }
   }
 }
