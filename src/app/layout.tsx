@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import { ClientLayout } from "@/components/index";
 import fonts from "@/fonts/fonts";
 
 export const metadata: Metadata = {
@@ -15,9 +15,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${fonts.inter.className}`}>
-        <Navbar />
-        {children}
+      <body className={`${fonts.inter.className} `}>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
