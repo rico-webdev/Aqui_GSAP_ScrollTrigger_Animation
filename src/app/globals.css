@@ -1,14 +1,18 @@
 @import "tailwindcss";
 
 /* dev  */
-*,
-*::before,
-*::after {
-  /* @apply bg-amber-500/5; */
+:not(body) {
+  /* background-color: rgba(255, 153, 65, 0.02); */
 }
 
-.font-modern-negra {
-  font-family: var(--font-modern-negra);
+@layer base {
+  body,
+  html {
+    @apply text-white bg-black min-h-dvh overflow-x-hidden;
+  }
+  a {
+    @apply cursor-pointer text-nowrap text-sm md:text-base hover:text-yellow transition-colors duration-300;
+  }
 }
 
 @theme {
@@ -17,63 +21,28 @@
   --color-white-100: #efefef;
 }
 
-@utility flex-center {
+@utility font-modern-negra {
+  font-family: var(--font-modern-negra);
+}
+@utility inter {
+  font-family: var(--font-inter);
+}
+@utility font-dancing-script {
+  font-family: var(--font-dancing-script);
+}
+@utility font-shadow {
+  font-family: var(--font-shadow);
+}
+@utility row-center {
   @apply flex justify-center items-center;
 }
-
 @utility col-center {
   @apply flex flex-col justify-center items-center;
 }
 
-html,
-body {
-  width: 100%;
-  background-color: #141414;
-  background-color: #010114;
-  background-color: #000000;
-  color: white;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  font-family: var(--font-inter);
-}
-
-@layer components {
-  main {
-    @apply w-full overflow-x-hidden;
-
-    h1 {
-      @apply flex-center text-9xl uppercase tracking-wide;
-    }
-  }
-
-  nav {
-    @apply fixed z-50 w-full px-10 font-extralight;
-
-    div {
-      @apply flex md:flex-row flex-col md:justify-between items-center gap-5 py-5 lg:px-0 px-5 container mx-auto;
-    }
-    a {
-      @apply cursor-pointer text-nowrap text-sm md:text-base hover:text-yellow transition-colors duration-300;
-    }
-
-    ul {
-      @apply flex-center lg:gap-12 gap-7;
-    }
-  }
-
-  #hero {
-    @apply relative z-10 min-h-dvh w-full border border-transparent;
-
-    h1 {
-      @apply mt-30 md:mt-32  text-8xl md:text-[15vw] leading-none text-center;
-    }
-
-    .left-leaf {
-      @apply absolute left-0 -bottom-2 md:top-40 w-[30%] md:w-fit;
-    }
-
-    .right-leaf {
-      @apply absolute right-0 top-1/4 md:top-2/4 xl:top-12 w-1/4 md:w-fit;
-    }
-  }
+@utility text-gradient {
+  background: linear-gradient(to bottom, #ffffff, #898989);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

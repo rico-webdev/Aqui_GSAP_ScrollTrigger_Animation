@@ -15,12 +15,14 @@ const ClientLayout = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <div id="smooth-wrapper">
-      <div id="smooth-content">
-        <Navbar />
-        <main>{children}</main>
+    <>
+      <Navbar />
+      <div id="smooth-wrapper">
+        <div id="smooth-content">
+          <main className="overflow-x-hidden">{children}</main>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
