@@ -1,40 +1,56 @@
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/plugins/index";
-import { useIsMobile } from "@/hooks/useIsMobile";
 
 const VideoScrollAnim = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const isMobile = useIsMobile();
-
-  const startValue = isMobile ? "top 50%" : "center 65%";
-  const endValue = isMobile ? "120% top" : "bottom top";
 
   useGSAP(() => {
     const video = videoRef.current;
     if (!video) return;
+    const mm = gsap.matchMedia();
 
-    const onMetadata = () => {
-      const scrollTriggerVideoTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: video,
-          start: startValue,
-          end: endValue,
-          scrub: 1.5,
-          pin: true,
+    const onReady = () => {
+      const duration = video.duration;
+      if (!duration || isNaN(duration)) return;
+
+      mm.add(
+        {
+          isMobile: "(max-width: 768px)",
+          isDesktop: "(min-width: 769px)",
         },
-      });
+        (context) => {
+          const conditions = context.conditions;
+          if (!conditions) return;
 
-      scrollTriggerVideoTl.to(video, {
-        currentTime: video.duration,
-      });
+          const start = conditions.isMobile ? "top 50%" : "center 65%";
+          const end = conditions.isMobile ? "120% top" : "bottom top";
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: video,
+              start,
+              end,
+              scrub: 1.1,
+              pin: true,
+            },
+          });
+
+          tl.to(video, { currentTime: video.duration });
+        }
+      );
     };
 
-    video.addEventListener("loadedmetadata", onMetadata);
+    if (video.readyState >= 1) {
+      onReady();
+    } else {
+      video.addEventListener("loadedmetadata", onReady);
+    }
 
     return () => {
-      video.removeEventListener("loadedmetadata", onMetadata);
+      video.removeEventListener("loadedmetadata", onReady);
+      mm.revert();
     };
-  }, [isMobile]);
+  }, []);
 
   return (
     <video
