@@ -13,55 +13,18 @@ gsap.registerPlugin(ScrollTrigger);
 
 // internal imports
 import { navLinks } from "@/constants/constants";
+import { navbarAnimation } from "@/utils/animations/textAnimations";
 
 const Navbar = () => {
-  const navRef = useRef(null);
-  const isAnimating = useRef(false);
+  const navRef = useRef<HTMLDivElement | null>(null);
+  const isAnimating = useRef<boolean>(false);
 
-  useGSAP(() => {
-    gsap.from(navRef.current, {
-      y: -100,
-      opacity: 0,
-      delay: 1.38,
-      duration: 0.6,
-      ease: "power1.out",
-    });
-    ScrollTrigger.create({
-      start: 0,
-      end: "max",
-      onUpdate: (self) => {
-        const scrollingUp = self.direction === -1;
-
-        if (scrollingUp && !isAnimating.current) {
-          isAnimating.current = true;
-
-          gsap.to(navRef.current, {
-            y: 0,
-            backgroundColor: "#00000050",
-            backdropFilter: "blur(8px)",
-            ease: "power1.out",
-            duration: 0.7,
-            onComplete: () => {
-              isAnimating.current = false;
-            },
-          });
-        }
-
-        if (!scrollingUp && !isAnimating.current) {
-          isAnimating.current = true;
-
-          gsap.to(navRef.current, {
-            y: "-100%",
-            ease: "power1.out",
-            duration: 0.7,
-            onComplete: () => {
-              isAnimating.current = false;
-            },
-          });
-        }
-      },
-    });
-  }, []);
+  useGSAP(
+    () => {
+      navbarAnimation(navRef, isAnimating);
+    },
+    { scope: navRef }
+  );
 
   return (
     <nav ref={navRef} className="fixed top-0 left-0 z-50 w-full font-extralight px-4 md:px-8">
