@@ -9,10 +9,13 @@ const inter = Inter({
 
 const dancingScript = Dancing_Script({
   variable: "--font-dancing-script",
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
 });
 
 const cinzel = Cinzel({
   weight: ["400"],
+  subsets: ["latin"],
   variable: "--font-cinzel",
 });
 

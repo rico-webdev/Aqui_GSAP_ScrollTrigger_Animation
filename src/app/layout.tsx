@@ -14,9 +14,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${fonts.modernNegra.variable} ${fonts.inter.variable} ${fonts.dancingScript.variable} ${fonts.cinzel.variable}`}>
+    <html
+      lang="en"
+      className={`${fonts.inter.variable} ${fonts.dancingScript.variable} ${fonts.cinzel.variable} ${fonts.modernNegra.variable}`}>
+      <head />
+      <body className="font-inter">
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
