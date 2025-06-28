@@ -1,17 +1,26 @@
 "use client";
+
+import { gsap, useGSAP, ScrollSmoother } from "@/plugins/index";
 import { Navbar } from "@/components/index";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
-gsap.registerPlugin(ScrollSmoother);
 
 const ClientLayout = ({ children }: { children: React.ReactNode }) => {
   useGSAP(() => {
-    ScrollSmoother.create({
-      smooth: 2.5,
-      effects: true,
-      smoothTouch: 0.1,
-    });
+    if (typeof window !== "undefined") {
+      gsap.registerPlugin(ScrollSmoother);
+      const smoother = ScrollSmoother.create({
+        wrapper: "#smooth-wrapper",
+        content: "#smooth-content",
+        smooth: 2,
+        effects: true,
+        smoothTouch: 0.1,
+        normalizeScroll: false,
+        ignoreMobileResize: true,
+      });
+
+      return () => {
+        smoother.kill();
+      };
+    }
   }, []);
 
   return (
@@ -19,7 +28,7 @@ const ClientLayout = ({ children }: { children: React.ReactNode }) => {
       <Navbar />
       <div id="smooth-wrapper">
         <div id="smooth-content">
-          <main className="overflow-x-hidden">{children}</main>
+          <main>{children}</main>
         </div>
       </div>
     </>

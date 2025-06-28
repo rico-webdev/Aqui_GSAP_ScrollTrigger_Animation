@@ -22,7 +22,7 @@ const Navbar = () => {
     gsap.from(navRef.current, {
       y: -100,
       opacity: 0,
-      delay: 1.91,
+      delay: 1.38,
       duration: 0.6,
       ease: "power1.out",
     });
@@ -64,9 +64,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav
-      ref={navRef}
-      className="fixed top-0 left-0 z-50 w-full font-extralight px-4 md:px-8 pb-4 md:pb-8">
+    <nav ref={navRef} className="fixed top-0 left-0 z-50 w-full font-extralight px-4 md:px-8">
       <div className="container col-center gap-5 md:flex-row md:justify-between py-5 mx-auto">
         <Link href="/" className="row-center gap-2">
           <Image src="/images/logo.png" alt="Logo" width={20} height={20} />

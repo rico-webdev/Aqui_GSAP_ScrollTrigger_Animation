@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fonts.modernNegra.variable} ${fonts.inter.className} ${fonts.dancingScript.variable} ${fonts.shadow.variable}`}>
+        className={`${fonts.modernNegra.variable} ${fonts.inter.variable} ${fonts.dancingScript.variable} ${fonts.cinzel.variable}`}>
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

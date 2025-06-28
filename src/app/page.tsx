@@ -4,7 +4,8 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div className="h-screen row-center bg-neutral-900"></div>
+      <div className="h-screen"></div>
+      <div className="h-screen"></div>
     </>
   );
 }

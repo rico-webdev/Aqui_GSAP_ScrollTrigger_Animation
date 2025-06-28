@@ -1,6 +1,21 @@
 import localFont from "next/font/local";
 import { Inter, Dancing_Script, Cinzel } from "next/font/google";
 
+const inter = Inter({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const dancingScript = Dancing_Script({
+  variable: "--font-dancing-script",
+});
+
+const cinzel = Cinzel({
+  weight: ["400"],
+  variable: "--font-cinzel",
+});
+
 const modernNegra = localFont({
   src: [
     {
@@ -14,26 +29,11 @@ const modernNegra = localFont({
   preload: true,
 });
 
-const dancingScript = Dancing_Script({
-  variable: "--font-dancing-script",
-});
-
-const shadow = Cinzel({
-  weight: ["400"],
-  variable: "--font-shadow",
-});
-
-const inter = Inter({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
 const fonts = {
-  modernNegra,
   inter,
   dancingScript,
-  shadow,
+  cinzel,
+  modernNegra,
 };
 
 export default fonts;
