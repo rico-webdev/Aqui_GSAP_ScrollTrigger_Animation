@@ -1,4 +1,4 @@
-import { MenuItem, MenuSection, NavLink } from "@/types";
+import { MenuItem, Menu, NavLink } from "@/types";
 
 export const navLinks: NavLink[] = [
   {
@@ -23,7 +23,7 @@ export const navLinks: NavLink[] = [
   },
 ];
 
-export const menu: {
+export const menuItems: {
   cocktails: MenuItem[];
   beers: MenuItem[];
 } = {
@@ -105,7 +105,7 @@ export const menu: {
   ],
 };
 
-export const menuSections: MenuSection[] = [
-  { title: `cocktails`, items: menu.cocktails, id: "cocktails" },
-  { title: `beers`, items: menu.beers, id: "beers" },
+export const menu: Menu[] = [
+  { title: `cocktails`, items: menuItems.cocktails, id: "cocktail" },
+  { title: `beers`, items: menuItems.beers, id: "beer" },
 ];

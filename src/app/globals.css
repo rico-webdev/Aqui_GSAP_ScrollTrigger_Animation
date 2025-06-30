@@ -18,8 +18,8 @@
 
 @theme {
   --color-light: #e0e7f5;
-  --color-yellow: #e7d393;
-  --color-citron: #dcd376;
+  --color-citron: #e7d393;
+  --color-cinnabar: #f04a2d;
   --color-highlight: var(--color-citron);
   --color-hover: var(--color-citron);
 }

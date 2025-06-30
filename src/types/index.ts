@@ -1,7 +1,7 @@
 export type ServingMethod = "Draft" | "Bottle" | "On the Rocks" | "Blended" | "Frozen";
 export type ServingSize = "Pint" | "Glass";
 
-export interface MenuSection {
+export interface Menu {
   title: string;
   items: MenuItem[];
   id: string;
