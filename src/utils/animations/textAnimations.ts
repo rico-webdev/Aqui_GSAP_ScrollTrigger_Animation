@@ -1,8 +1,25 @@
 import { gsap, SplitText, ScrollTrigger } from "@/plugins/index";
 
+// DEFAULT SETTINGS FOR SCROLLTRIGGER AND ANIMATIONS
+// =================================================
+// dev tools
+const markers = false &&
+  process.env.NODE_ENV === "development" && {
+    fontSize: "12px",
+    indent: 10,
+  };
+ScrollTrigger.defaults({
+  toggleActions: "play revert none reverse",
+  markers,
+});
+
+const ease = "power1.out";
+
+// INIT: HERO ANIMATION
+// ==================================================
 export const initAnimation = () => {
   const heroTimeline = gsap.timeline({
-    defaults: { ease: "power1.inOut", duration: 0.5 },
+    defaults: { ease, duration: 0.5 },
   });
 
   let charsAnim: gsap.core.Tween | null = null;
@@ -74,7 +91,7 @@ export const initAnimation = () => {
     {
       opacity: 0,
       x: 100,
-      ease: "power1.inOut",
+      ease,
       duration: 0.5,
     },
 
@@ -82,40 +99,8 @@ export const initAnimation = () => {
   );
 };
 
-export const leafAnimation = () => {
-  const mm = gsap.matchMedia();
-  mm.add("(min-width: 767px)", () => {
-    gsap.to("#left-leaf", {
-      scrollTrigger: {
-        trigger: "#left-leaf",
-        start: "top 15%",
-        scrub: 1,
-      },
-      y: 250,
-    });
-  });
-
-  mm.add("(max-width: 767px)", () => {
-    gsap.to("#left-leaf", {
-      scrollTrigger: {
-        trigger: "#left-leaf",
-        start: "top 60%",
-        scrub: 1,
-      },
-      y: -200,
-    });
-  });
-
-  gsap.to("#right-leaf", {
-    scrollTrigger: {
-      trigger: "#right-leaf",
-      start: "top 15%",
-      scrub: 1,
-    },
-    y: -200,
-  });
-};
-
+// NAVBAR ANIMATION
+// =================================================
 export const navbarAnimation = (
   navRef: React.RefObject<HTMLDivElement | null>,
   isAnimating: React.RefObject<boolean>
@@ -125,7 +110,7 @@ export const navbarAnimation = (
     opacity: 0,
     delay: 1.38,
     duration: 0.6,
-    ease: "power1.out",
+    ease,
   });
   ScrollTrigger.create({
     start: 0,
@@ -140,7 +125,7 @@ export const navbarAnimation = (
           y: 0,
           backgroundColor: "#00000050",
           backdropFilter: "blur(8px)",
-          ease: "power1.out",
+          ease,
           duration: 0.7,
           onComplete: () => {
             isAnimating.current = false;
@@ -151,7 +136,7 @@ export const navbarAnimation = (
 
         gsap.to(navRef.current, {
           y: "-100%",
-          ease: "power1.out",
+          ease,
           duration: 0.7,
           onComplete: () => {
             isAnimating.current = false;
@@ -160,4 +145,87 @@ export const navbarAnimation = (
       }
     },
   });
+};
+
+// MENU SECTION ANIMATION
+// ====================
+export const menuAnimations = () => {
+  const splitText = SplitText.create("#menu-heading", {
+    type: "lines, words",
+    wordsClass: "word++",
+  });
+
+  // menu heading animation
+  const mmHeading = gsap.matchMedia();
+  mmHeading.add(
+    {
+      isMobile: "(max-width: 768px)",
+      isDesktop: "(min-width: 769px)",
+    },
+    (context) => {
+      const conditions = context.conditions;
+      if (!conditions) return;
+
+      const { isMobile } = conditions;
+
+      ScrollTrigger.create({
+        id: "menu_heading",
+        trigger: "#menu",
+        start: isMobile ? "top 76%" : "top 40%",
+        markers,
+        animation: gsap.from(splitText.lines, {
+          y: 25,
+          opacity: 0,
+          stagger: 0.1,
+        }),
+      });
+    }
+  );
+
+  // list heading animation (cocktails / beers )
+  const mmListItems = gsap.matchMedia();
+  mmListItems.add(
+    {
+      isMobile: "(max-width: 768px)",
+      isDesktop: "(min-width: 769px)",
+    },
+    (context) => {
+      const conditions = context.conditions;
+      if (!conditions) return;
+
+      const { isMobile } = conditions;
+
+      gsap.utils.toArray<HTMLElement>("#list > *").forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            id: `list_item`,
+            trigger: el,
+            start: isMobile ? "top 55%" : "top 70%",
+            toggleActions: "play none none reverse",
+            markers,
+          },
+          y: 25,
+          opacity: 0,
+          duration: 0.3,
+          ease,
+        });
+      });
+
+      gsap.utils.toArray<HTMLElement>("#list-title").forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            id: `list_title`,
+            trigger: el,
+            start: isMobile ? "bottom 58%" : "top 70%",
+            toggleActions: "play none none reverse",
+            markers,
+          },
+          y: 25,
+          opacity: 0,
+          duration: 0.2,
+          ease,
+        });
+      });
+    }
+  );
 };

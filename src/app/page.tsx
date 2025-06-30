@@ -1,4 +1,4 @@
-import { Hero } from "@/components/index";
+import { Hero, Menu } from "@/components/index";
 import Head from "next/head";
 
 export default function Home() {
@@ -14,8 +14,8 @@ export default function Home() {
       </Head>
 
       <Hero />
-      <div className="h-screen"></div>
-      <div className="h-screen"></div>
+      <Menu />
+      <div className="min-h-dvh"></div>
     </>
   );
 }

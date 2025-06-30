@@ -3,18 +3,25 @@
 @layer base {
   body,
   html {
-    @apply text-white bg-black min-h-dvh overflow-x-hidden;
+    @apply text-light bg-[#020202] min-h-dvh overflow-x-hidden;
   }
   a {
     @apply cursor-pointer text-nowrap text-sm md:text-base hover:text-hover transition-colors duration-300;
   }
 }
 
+@layer components {
+  .word4 {
+    @apply text-highlight font-dancing-script capitalize text-4xl md:text-6xl;
+  }
+}
+
 @theme {
+  --color-light: #e0e7f5;
   --color-yellow: #e7d393;
-  --color-green: #bdc667;
-  --color-white-100: #efefef;
-  --color-hover: var(--color-green);
+  --color-citron: #dcd376;
+  --color-highlight: var(--color-citron);
+  --color-hover: var(--color-citron);
 }
 
 @utility font-modern-negra {
