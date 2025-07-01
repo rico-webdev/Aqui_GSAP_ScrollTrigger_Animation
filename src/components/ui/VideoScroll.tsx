@@ -28,12 +28,11 @@ const VideoScrollAnim = () => {
             scrollTrigger: {
               id: "video_scroll",
               trigger: video,
-              endTrigger: "#menu",
+              endTrigger: "#signatures",
               start,
               end: "bottom bottom",
               scrub: 1.1,
               pin: true,
-       
             },
           });
           tl.to(video, { currentTime: video.duration });
@@ -57,7 +56,7 @@ const VideoScrollAnim = () => {
     <video
       id="video"
       ref={videoRef}
-      className="w-full h-[42%] xl:h-[60%] absolute bottom-0 md:object-contain object-bottom object-cover"
+      className="w-full h-[42%] xl:h-[60%] absolute z-10 bottom-0 md:object-contain object-bottom object-cover"
       aria-label="An ice cube falling into a glass of cocktail"
       aria-hidden="true"
       preload="auto"

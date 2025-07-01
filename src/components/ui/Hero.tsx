@@ -7,7 +7,7 @@ import { useGSAP } from "@/plugins/index";
 
 import dynamic from "next/dynamic";
 import { initAnimation } from "@/utils/animations/textAnimations";
-const VideoScrollAnim = dynamic(() => import("./VideoScrollAnim"), {
+const VideoScrollAnim = dynamic(() => import("./VideoScroll"), {
   ssr: false,
 });
 

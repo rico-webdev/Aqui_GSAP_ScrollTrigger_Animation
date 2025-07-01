@@ -135,8 +135,8 @@ export const navbarAnimation = (navRef: React.RefObject<HTMLDivElement | null>) 
 
 // MENU SECTION ANIMATION
 // ====================
-export const menuAnimations = () => {
-  const splitText = SplitText.create("#menu-heading", {
+export const signaturesAnim = () => {
+  const splitText = SplitText.create("#signatures-heading", {
     type: "lines, words",
     autoSplit: true,
     wordsClass: "word++",
@@ -156,8 +156,8 @@ export const menuAnimations = () => {
       const { isMobile } = conditions;
 
       ScrollTrigger.create({
-        id: "menu_heading",
-        trigger: "#menu",
+        id: "signatures_heading",
+        trigger: "#signatures",
         start: isMobile ? "top 72%" : "top 45%",
         markers,
         animation: gsap.from(splitText.lines, {

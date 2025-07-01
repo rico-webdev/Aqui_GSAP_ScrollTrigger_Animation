@@ -2,9 +2,9 @@ import { MenuItem, Menu, NavLink } from "@/types";
 
 export const navLinks: NavLink[] = [
   {
-    id: "menu",
-    title: "Menu",
-    href: "#menu",
+    id: "signatures",
+    title: "Signatures",
+    href: "#signatures",
   },
   {
     id: "about",

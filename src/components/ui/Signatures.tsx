@@ -3,25 +3,25 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { menu } from "@/constants/constants";
-import { menuAnimations } from "@/utils/animations/textAnimations";
+import { signaturesAnim } from "@/utils/animations/textAnimations";
 import { useGSAP } from "@/plugins/index";
 
-const Menu = () => {
+const Signatures = () => {
   const container = useRef<HTMLDivElement | null>(null);
 
   useGSAP(
     () => {
-      menuAnimations();
+      signaturesAnim();
     },
     { scope: container }
   );
   return (
     <div className="relative" ref={container}>
       <section
-        id="menu"
+        id="signatures"
         className="container flex flex-col mx-auto relative z-10 min-h-dvh px-10 pb-[330px] md:px-0">
         <h2
-          id="menu-heading"
+          id="signatures-heading"
           className="absolute z-10 -top-70 left-1/2 transform -translate-x-1/2 md:relative md:top-auto md:left-auto md:translate-x-0 md:transform-none text-[clamp(1.5rem,_6vw,_2.5rem)] text-neutral-400 text-center w-full max-w-2xl mx-auto px-2 my-20 font-light leading-tight">
           {/* NOTE: Any content change here may require updating the GSAP animations target start values */}
           <div>Savour the signatures that never fade. Poured with care, served with soul.</div>
@@ -78,4 +78,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default Signatures;
