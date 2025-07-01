@@ -11,8 +11,8 @@
 }
 
 @layer components {
-  .word1 {
-    @apply text-highlight font-dancing-script capitalize text-7xl md:text-6xl;
+  .word3 {
+    @apply text-highlight font-dancing-script capitalize md:text-6xl;
   }
 }
 

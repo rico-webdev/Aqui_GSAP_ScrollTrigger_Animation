@@ -3,6 +3,7 @@ import { gsap, SplitText, ScrollTrigger } from "@/plugins/index";
 // DEFAULT SETTINGS FOR SCROLLTRIGGER AND ANIMATIONS
 // =================================================
 // dev tools
+
 const markers = false &&
   process.env.NODE_ENV === "development" && {
     fontSize: "12px",
@@ -12,7 +13,6 @@ ScrollTrigger.defaults({
   toggleActions: "play revert none reverse",
   markers,
 });
-
 const ease = "power1.out";
 
 // INIT: HERO ANIMATION
@@ -138,6 +138,7 @@ export const navbarAnimation = (navRef: React.RefObject<HTMLDivElement | null>) 
 export const menuAnimations = () => {
   const splitText = SplitText.create("#menu-heading", {
     type: "lines, words",
+    autoSplit: true,
     wordsClass: "word++",
   });
 
@@ -157,7 +158,7 @@ export const menuAnimations = () => {
       ScrollTrigger.create({
         id: "menu_heading",
         trigger: "#menu",
-        start: isMobile ? "top 76%" : "top 40%",
+        start: isMobile ? "top 72%" : "top 45%",
         markers,
         animation: gsap.from(splitText.lines, {
           y: 25,

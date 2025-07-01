@@ -22,7 +22,7 @@ const VideoScrollAnim = () => {
           const conditions = context.conditions;
           if (!conditions) return;
 
-          const start = conditions.smallSize ? "top 55%" : "center 70%";
+          const start = conditions.smallSize ? "top 58%" : "center 70%";
 
           const tl = gsap.timeline({
             scrollTrigger: {
@@ -33,6 +33,7 @@ const VideoScrollAnim = () => {
               end: "bottom bottom",
               scrub: 1.1,
               pin: true,
+       
             },
           });
           tl.to(video, { currentTime: video.duration });
@@ -56,7 +57,7 @@ const VideoScrollAnim = () => {
     <video
       id="video"
       ref={videoRef}
-      className="w-full h-[45%] xl:h-[60%] absolute bottom-0 md:object-contain object-bottom object-cover"
+      className="w-full h-[42%] xl:h-[60%] absolute bottom-0 md:object-contain object-bottom object-cover"
       aria-label="An ice cube falling into a glass of cocktail"
       aria-hidden="true"
       preload="auto"
