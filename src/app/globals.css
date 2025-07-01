@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @layer base {
-  body,
-  html {
+  html,
+  body {
     @apply text-light bg-[#020202] min-h-dvh overflow-x-hidden;
   }
   a {
@@ -11,8 +11,8 @@
 }
 
 @layer components {
-  .word4 {
-    @apply text-highlight font-dancing-script capitalize text-4xl md:text-6xl;
+  .word1 {
+    @apply text-highlight font-dancing-script capitalize text-7xl md:text-6xl;
   }
 }
 

@@ -101,10 +101,7 @@ export const initAnimation = () => {
 
 // NAVBAR ANIMATION
 // =================================================
-export const navbarAnimation = (
-  navRef: React.RefObject<HTMLDivElement | null>,
-  isAnimating: React.RefObject<boolean>
-) => {
+export const navbarAnimation = (navRef: React.RefObject<HTMLDivElement | null>) => {
   gsap.from(navRef.current, {
     y: -100,
     opacity: 0,
@@ -117,30 +114,19 @@ export const navbarAnimation = (
     end: "max",
     onUpdate: (self) => {
       const scrollingUp = self.direction === -1;
-
-      if (scrollingUp && !isAnimating.current) {
-        isAnimating.current = true;
-
+      if (scrollingUp) {
         gsap.to(navRef.current, {
           y: 0,
           backgroundColor: "#00000050",
           backdropFilter: "blur(8px)",
           ease,
           duration: 0.7,
-          onComplete: () => {
-            isAnimating.current = false;
-          },
         });
-      } else if (!scrollingUp && !isAnimating.current) {
-        isAnimating.current = true;
-
+      } else {
         gsap.to(navRef.current, {
           y: "-100%",
           ease,
           duration: 0.7,
-          onComplete: () => {
-            isAnimating.current = false;
-          },
         });
       }
     },
@@ -195,7 +181,7 @@ export const menuAnimations = () => {
 
       const { isMobile } = conditions;
 
-      gsap.utils.toArray<HTMLElement>("#list > *").forEach((el) => {
+      gsap.utils.toArray<HTMLElement>(".list > *").forEach((el) => {
         gsap.from(el, {
           scrollTrigger: {
             id: `list_item`,
@@ -211,7 +197,7 @@ export const menuAnimations = () => {
         });
       });
 
-      gsap.utils.toArray<HTMLElement>("#list-title").forEach((el) => {
+      gsap.utils.toArray<HTMLElement>(".list-title").forEach((el) => {
         gsap.from(el, {
           scrollTrigger: {
             id: `list_title`,

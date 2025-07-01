@@ -17,11 +17,10 @@ import { navbarAnimation } from "@/utils/animations/textAnimations";
 
 const Navbar = () => {
   const navRef = useRef<HTMLDivElement | null>(null);
-  const isAnimating = useRef<boolean>(false);
 
   useGSAP(
     () => {
-      navbarAnimation(navRef, isAnimating);
+      navbarAnimation(navRef);
     },
     { scope: navRef }
   );

@@ -63,9 +63,8 @@ const Hero = () => {
         alt="green leaf"
         width={228}
         height={478}
-        priority={false}
-        loading="lazy"
-        className="absolute -left-10 top-1/3 w-[30%] md:w-[18%] transform rotate-45"
+        priority
+        className="absolute -left-10 top-1/3 w-[30%] md:w-[18%] h-auto transform rotate-45"
         data-speed="1.35"
       />
       <div>
@@ -75,9 +74,8 @@ const Hero = () => {
           alt="green leaf"
           width={266}
           height={661}
-          priority={false}
-          loading="lazy"
-          className="absolute -right-10 top-[50] w-[20%] transform -rotate-135"
+          priority
+          className="absolute -right-10 top-[50] w-[20%] h-auto transform -rotate-135"
           data-speed="1.2"
         />
       </div>
