@@ -26,7 +26,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav ref={navRef} className="fixed top-0 left-0 z-50 w-full font-extralight px-4 md:px-8">
+    <nav ref={navRef} className="fixed top-0 left-0 z-50 w-full font-extralight text-5xl ">
       <div className="container col-center gap-5 md:flex-row md:justify-between py-5 mx-auto">
         <Link href="/" className="row-center gap-2">
           <CldImage src="logo_atmu8v" alt="Logo" width={20} height={20} />

@@ -21,7 +21,7 @@ const Hero = () => {
         className="relative z-10 min-h-dvh flex flex-col md:justify-between px-4 lg:px-8 pb-4 lg:pb-8 pt-25">
         <h1
           id="title"
-          className="text-[clamp(6rem,15vw,12rem)] text-center font-cinzel font-extralight text-red-500">
+          className="text-[clamp(6rem,15vw,12rem)] text-center font-cinzel font-extralight">
           aquí
         </h1>
 
