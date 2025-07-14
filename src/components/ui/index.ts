@@ -3,8 +3,8 @@ export { default as Navbar } from "./layout/Navbar";
 export { default as ClientLayout } from "./layout/ClientLayout";
 
 // Content Components
-export { default as Hero } from "./content/hero";
-export { default as Signatures } from "./content/signatures";
+export { default as Hero } from "./content/Hero";
+export { default as Signatures } from "./content/Signatures";
 export { default as Menu } from "./content/menu";
 
 // Media Components

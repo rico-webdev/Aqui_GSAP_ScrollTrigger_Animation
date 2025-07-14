@@ -1,8 +1,19 @@
-import React from "react";
+import { RefObject, Dispatch, SetStateAction } from "react";
 import { menu } from "@/constants/constants";
 import { CldImage } from "next-cloudinary";
+import type { MenuItem } from "@/types/global";
 
-const MenuNavigation = ({
+interface ArrowNavigationProps {
+  currentSectionIndex: number;
+  handleNavigation: (direction: "next" | "prev") => void;
+  currentIndex: number;
+  previousIndex: RefObject<number>;
+  setCurrentIndex: Dispatch<SetStateAction<number>>;
+  className?: string;
+  bulletPosition: string;
+}
+
+const ArrowNavigation = ({
   currentSectionIndex,
   handleNavigation,
   currentIndex,
@@ -10,15 +21,7 @@ const MenuNavigation = ({
   setCurrentIndex,
   className,
   bulletPosition,
-}: {
-  currentSectionIndex: number;
-  handleNavigation: (direction: "next" | "prev") => void;
-  currentIndex: number;
-  previousIndex: React.RefObject<number>;
-  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
-  className?: string;
-  bulletPosition: string;
-}) => {
+}: ArrowNavigationProps) => {
   return (
     <div
       className={`z-10 flex justify-evenly items-end md:gap-5 sm:items-center sm:justify-between flex-1 ${className}`}>
@@ -38,7 +41,7 @@ const MenuNavigation = ({
 
       <div className={`col-center h-[48px] gap-3 ${bulletPosition}`}>
         <div className="row-center gap-3">
-          {menu[currentSectionIndex].items.map((_, i) => (
+          {menu[currentSectionIndex].items.map((_: MenuItem, i: number) => (
             <button
               key={i}
               onClick={() => {
@@ -69,4 +72,4 @@ const MenuNavigation = ({
   );
 };
 
-export default MenuNavigation;
+export default ArrowNavigation;

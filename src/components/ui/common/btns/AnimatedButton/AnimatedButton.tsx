@@ -78,10 +78,6 @@ const AnimatedButton = ({
   const activeColors = isActive ? "text-red-500" : "text-light/70 hover:text-white";
   const cloneColors = isActive ? "text-red-500" : "text-red-500";
 
-  console.log("AnimatedButton rendered with colors:", {
-    activeColors,
-    cloneColors,
-  });
   return (
     <div
       ref={container}

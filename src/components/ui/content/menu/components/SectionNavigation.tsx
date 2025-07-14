@@ -1,4 +1,4 @@
-import { Menu } from "@/types";
+import { Menu } from "@/types/global";
 import AnimatedButton from "@/components/ui/common/btns/AnimatedButton";
 
 interface SectionNavigationProps {

@@ -1,4 +1,4 @@
-import { MenuItem } from "@/types";
+import { MenuItem } from "@/types/global";
 
 interface MenuContentProps {
   item: MenuItem;

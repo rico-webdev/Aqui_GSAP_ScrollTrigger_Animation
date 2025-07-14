@@ -1,7 +1,7 @@
 import { CldImage } from "next-cloudinary";
 import { RefObject, Dispatch, SetStateAction } from "react";
-import { MenuItem } from "@/types";
-import MenuNavigation from "../MenuNavigation";
+import { MenuItem } from "@/types/global";
+import ArrowNavigation from "./ArrowNavigation";
 
 interface MenuImagesProps {
   items: MenuItem[];
@@ -39,7 +39,7 @@ const MenuImages = ({
           );
         })}
         <div className="gradient-highlight"></div>
-        <MenuNavigation
+        <ArrowNavigation
           currentSectionIndex={currentSectionIndex}
           handleNavigation={handleNavigation}
           currentIndex={currentIndex}
