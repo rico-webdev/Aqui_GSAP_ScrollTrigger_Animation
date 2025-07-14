@@ -1,6 +1,8 @@
-import { Hero, Menu } from "@/components/index";
+import { Hero, Menu } from "@/components/ui";
+import VideoScrollClient from "@/components/client/VideoScrollClient";
 import Head from "next/head";
 
+// Home page component
 export default function Home() {
   return (
     <>
@@ -13,7 +15,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Hero />
+      <div className="relative">
+        <Hero />
+        <VideoScrollClient />
+      </div>
+      {/* <Signatures /> */}
       <Menu />
       <div className="min-h-dvh"></div>
     </>

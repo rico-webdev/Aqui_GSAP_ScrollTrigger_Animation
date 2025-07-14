@@ -1,4 +1,5 @@
-export { default as ClientLayout } from "./layout/ClientLayout";
-export { default as Navbar } from "./layout/Navbar";
-export { default as Hero } from "./ui/Hero";
-export { default as Menu } from "./ui/Signatures";
+// Re-export all UI components
+export * from "./ui";
+
+// Re-export client components
+export { default as VideoScrollClient } from "./client/VideoScrollClient";

@@ -1,21 +1,28 @@
+/* ========================================
+   DEBUGGING & DEVELOPMENT
+======================================== */
+/* Uncomment for layout debugging */
+
+@layer utilities {
+  .debug * {
+    outline: 1px solid red !important;
+  }
+
+  .debug-grid {
+    background-image: linear-gradient(rgba(255, 0, 0, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+/* ========================================
+   IMPORTS & EXTERNAL DEPENDENCIES
+======================================== */
 @import "tailwindcss";
 
-@layer base {
-  html,
-  body {
-    @apply text-light bg-[#020202] min-h-dvh overflow-x-hidden;
-  }
-  a {
-    @apply cursor-pointer text-nowrap text-sm md:text-base hover:text-hover transition-colors duration-300;
-  }
-}
-
-@layer components {
-  .word3 {
-    @apply text-highlight font-dancing-script capitalize md:text-6xl;
-  }
-}
-
+/* ========================================
+   DESIGN TOKENS & THEME
+======================================== */
 @theme {
   --color-light: #e0e7f5;
   --color-citron: #e7d393;
@@ -24,6 +31,9 @@
   --color-hover: var(--color-citron);
 }
 
+/* ========================================
+   TYPOGRAPHY UTILITIES
+======================================== */
 @utility font-modern-negra {
   font-family: var(--font-modern-negra);
 }
@@ -36,15 +46,107 @@
 @utility font-dancing-script {
   font-family: var(--font-dancing-script);
 }
+
+/* ========================================
+   LAYOUT UTILITIES
+======================================== */
 @utility row-center {
   @apply flex justify-center items-center;
 }
 @utility col-center {
   @apply flex flex-col justify-center items-center;
 }
+@utility px-responsive {
+  @apply px-4 md:px-8 lg:px-12 xl:px-16;
+}
+
+/* ========================================
+   VISUAL EFFECTS UTILITIES
+======================================== */
 @utility text-gradient {
   background: linear-gradient(to bottom, #ffffff, #898989);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* ========================================
+   BASE STYLES & RESETS
+======================================== */
+@layer base {
+  /* Document-level styles */
+  html,
+  body {
+    @apply text-light bg-[#020202] min-h-dvh overflow-x-hidden;
+  }
+
+  /* Global element styles */
+  a {
+    @apply cursor-pointer text-nowrap text-sm md:text-base hover:text-hover transition-colors duration-300;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+}
+
+/* ========================================
+   REUSABLE COMPONENTS
+======================================== */
+@layer components {
+  /* Visual Elements */
+  .gradient-highlight {
+    @apply bg-[radial-gradient(circle,_rgba(231,211,147,0.5)_0%,_rgba(235,230,230,0.5))_100%)] rounded-full absolute inset-0 -z-100 blur-3xl brightness-75;
+  }
+
+  /* Typography Components */
+  .word3 {
+    @apply text-highlight font-dancing-script capitalize text-[clamp(2rem,_8vw,_4.5rem)];
+  }
+}
+
+/* ========================================
+   PAGE-SPECIFIC STYLES
+======================================== */
+@layer components {
+  /* Menu Page Styles */
+  #menu {
+    @apply min-h-dvh mx-auto relative col-center gap-20 md:gap-20 pt-10 px-responsive isolate;
+
+    h2 {
+      @apply font-cinzel text-8xl text-highlight underline decoration-3 underline-offset-15;
+    }
+
+    #item-container {
+      @apply relative col-center gap-20 w-full md:w-1/3;
+
+      .image-container {
+        @apply relative w-full aspect-square max-w-[500px];
+      }
+
+      .item-image {
+        @apply object-contain object-bottom drop-shadow-lg drop-shadow-highlight;
+      }
+    }
+
+    article {
+      @apply flex flex-col gap-3 lg:max-w-xl;
+
+      #item-title {
+        @apply text-5xl font-cinzel text-highlight md:whitespace-nowrap;
+      }
+
+      #item-subtitle {
+        @apply text-xl font-extralight text-neutral-300 tracking-tight;
+      }
+
+      #item-garnish {
+        @apply flex flex-col text-highlight/65 text-xs font-light -mt-2;
+      }
+
+      #item-description {
+        @apply text-neutral-200 font-light;
+      }
+    }
+  }
 }
